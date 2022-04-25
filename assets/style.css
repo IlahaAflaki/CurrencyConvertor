@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: #F5F5F6;
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+}
+
+header .bank_home_btn {
+    border: none;
+    background: none;
+    margin-right: 90px;
+}
+
+header .bank_home_btn:hover {
+    cursor: pointer;
+}
+
+header .signin {
+    background: #FFFFFF;
+    border-radius: 4px;
+    letter-spacing: 0.06em;
+    font-size: 15px;
+    line-height: 13px;
+    height: 50px;
+    font-weight: 700;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+    border-radius: 10px;
+
+}
+
+header .signin:hover {
+    background: #833AE0;
+    cursor: pointer;
+    color: white;
+}
+
+header ul {
+    letter-spacing: 0.06em;
+    color: #959BA4;
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 40px;
+    margin-right: 110px;
+}
+
+header li:hover {
+    color: black;
+    cursor: pointer;
+}
+
+main {
+    width: 760px;
+    height: 246px;
+    margin-top: 70px;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+main .left_and_right {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+main h1 {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+main .main_p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 14px;
+    color: #9F9F9F;
+    margin-bottom: 13px;
+}
+
+main .currencies {
+    display: flex;
+    list-style: none;
+}
+
+main .currency_elements_left {
+    border: 1.5px solid #E5E5E5;
+    background: none;
+    padding: 9px 20px 9px 20px;
+}
+
+main .currency_elements_right {
+    border: 1.5px solid #E5E5E5;
+    background: none;
+    padding: 9px 20px 9px 20px;
+}
+
+main .rub_btn {
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+main .gbp_btn {
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+main .calculator_currency {
+    width: 300px;
+    height: 120px;
+    border: 2px solid #E5E5E5;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+main .input_currency {
+    font-size: 35px;
+    width: 260px;
+    height: 50px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+main button {
+    cursor: pointer;
+}
+
+main .active {
+    background-color: #833AE0;
+    color: white;
+    border: 1px solid #833AE0;
+}
+
+main .money-txt {
+    display: flex;
+    justify-self: start;
+    align-self: flex-start;
+    margin-left: 18px;
+    color: #C6C6C6;
+    size: 14px;
+}
+
+main .money {
+    /* display: flex; */
+    align-self: flex-start;
+    margin-left: 18px;
+    font-size: 35px;
+    margin-top: 10px;
+    font-weight: 700;
+    width: 260px;
+    overflow-wrap: break-word;
+}
+
+
+@media only screen and (max-width: 830px) {
+
+
+    body{
+        width: 200px;
+    }
+    header .header_parts {
+        display: none;
+    }
+
+    header{
+        width: 100vw;
+    }
+
+    main .left_and_right{
+        display: flex;
+        flex-direction: column;
+        width: 100px;
+    }
+
+    main .leftside{
+        width: 100px;
+        margin-bottom: 70px;
+    }
+
+    main .rightside{
+        width: 100px;
+        margin-bottom: 100px;
+    }
+
+
+    main .rightside_p{
+        width: 200px;
+    }
+
+    main h1{
+        width: 200px;
+    }
+
+    main{
+        margin-top: 90px;
+        width: 100px;
+        display: flex;
+        align-self: center;
+        justify-self: center;
+        height: 100vh;
+        justify-content: space-around;
+
+    }
+
+}
