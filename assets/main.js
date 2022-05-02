@@ -115,8 +115,8 @@ function getValue(baseCurrency, targetCurrency, amount) {
 
 
         .catch(error => {
-            inptRight.value = `Error: ${error}`;
-            console.error('There was an error!');
+            inptRight.value = `Oops..Something is wrong!`;
+            console.error('There was an error!', error);
         });
 
 
@@ -151,8 +151,8 @@ function getValue1(baseCurrency, targetCurrency, amount) {
         })
 
         .catch(error => {
-            inpt.value = `Error: ${error}`;
-            console.error('There was an error!');
+            inpt.value = `Oops..Something is wrong!`;
+            console.error('There was an error!', error);
         });
         
     }
