@@ -10,12 +10,41 @@ let money_txt = document.querySelectorAll('.money-txt');
 
 inpt.addEventListener('input', () => {
 
+    let letters = /^[A-Za-z]+$/;
+
+
+    if (inpt.value.match(letters)) {
+        inpt.value = ''
+    } else {
+
+        if (inpt.value.match(',')) {
+            let newValue = inpt.value.replace(',', '.');
+            inpt.value = newValue
+        }
+
+    }
+
+
 
     getValue(baseCurrency, targetCurrency, inpt.value);
 
 });
 
 inptRight.addEventListener('input', () => {
+
+    let letters = /^[A-Za-z]+$/;
+
+
+    if (inptRight.value.match(letters)) {
+        inptRight.value = ''
+    } else {
+
+        if (inptRight.value.match(',')) {
+            let newValue = inptRight.value.replace(',', '.');
+            inptRight.value = newValue
+        }
+
+    }
 
 
     getValue1(baseCurrency, targetCurrency, inptRight.value);
@@ -41,7 +70,6 @@ btnsLeft.forEach(button => {
 btnsRight.forEach(button => {
     button.addEventListener('click', function () {
         targetCurrency = button.innerText
-        console.log(targetCurrency)
         btnsRight.forEach(oldButton => {
             oldButton.classList.remove('active');
         });
@@ -53,59 +81,87 @@ btnsRight.forEach(button => {
 });
 
 
+
+
+
 function getValue(baseCurrency, targetCurrency, amount) {
 
-    let requestURL = `https://api.exchangerate.host/convert?from=${baseCurrency}&to=${targetCurrency}`;
-    let request = new XMLHttpRequest();
-    request.open('GET', requestURL);
-    request.responseType = 'json';
-    request.send();
 
-    request.onload = function () {
-        let response = request.response;
-        // console.log(response);
+    if (baseCurrency === targetCurrency) {
+
+        inptRight.value = inpt.value
+
+        money_txt[0].innerText = `1 ${baseCurrency} = 1 ${targetCurrency}`
+        money_txt[1].innerText = `1 ${targetCurrency} = 1 ${baseCurrency}`
+
+    } else {
+
+        fetch(`https://api.exchangerate.host/convert?from=${baseCurrency}&to=${targetCurrency}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                money_txt[0].innerText = `1 ${baseCurrency} = ${data.result} ${targetCurrency}`
+                money_txt[1].innerText = `1 ${targetCurrency} = ${1 / data.result} ${baseCurrency}`
+
+                if (Number(inpt.value) === 0) {
+                    inptRight.value = ''
+                } else {
+
+                    inptRight.value = amount * data.result;
+                }
+
+            })
 
 
-        money_txt[0].innerText = `1 ${baseCurrency} = ${response.result} ${targetCurrency}`
-        money_txt[1].innerText = `1 ${targetCurrency} = ${1 / response.result} ${baseCurrency}`
+        .catch(error => {
+            inptRight.value = `Error: ${error}`;
+            console.error('There was an error!');
+        });
 
-
-        if (Number(inpt.value) === 0) {
-            inptRight.value = ''
-        } else {
-            
-            inptRight.value = amount * response.result;
-        }
 
     }
 
 }
+
+
 
 
 function getValue1(baseCurrency, targetCurrency, amount) {
 
-    let requestURL = `https://api.exchangerate.host/convert?from=${targetCurrency}&to=${baseCurrency}`;
-    let request = new XMLHttpRequest();
-    request.open('GET', requestURL);
-    request.responseType = 'json';
-    request.send();
+    if (baseCurrency === targetCurrency) {
 
-    request.onload = function () {
-        let response = request.response;
-        console.log(response);
+        inpt.value = inptRight.value
 
+        money_txt[0].innerText = `1 ${baseCurrency} = 1 ${targetCurrency}`
+        money_txt[1].innerText = `1 ${targetCurrency} = 1 ${baseCurrency}`
 
-        money_txt[0].innerText = `1 ${baseCurrency} = ${response.result} ${targetCurrency}`
-        money_txt[1].innerText = `1 ${targetCurrency} = ${1 / response.result} ${baseCurrency}`
+    } else {
 
-            console.log(amount)
+        fetch(`https://api.exchangerate.host/convert?from=${targetCurrency}&to=${baseCurrency}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
 
-            inpt.value = amount * response.result;
+            money_txt[0].innerText = `1 ${baseCurrency} = ${data.result} ${targetCurrency}`
+            money_txt[1].innerText = `1 ${targetCurrency} = ${1 / data.result} ${baseCurrency}`
+
+            inpt.value = amount * data.result;
+            
+        })
+
+        .catch(error => {
+            inpt.value = `Error: ${error}`;
+            console.error('There was an error!');
+        });
         
-
     }
-
+        
 }
 
 
 getValue(baseCurrency, targetCurrency, amount);
+
+
+
+
