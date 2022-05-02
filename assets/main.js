@@ -116,6 +116,8 @@ function getValue(baseCurrency, targetCurrency, amount) {
 
         .catch(error => {
             inptRight.value = `Oops..Something is wrong!`;
+            inptRight.style.color = 'red';
+            inptRight.style.fontSize = '15px';
             console.error('There was an error!', error);
         });
 
@@ -153,7 +155,7 @@ function getValue1(baseCurrency, targetCurrency, amount) {
         .catch(error => {
             inpt.value = `Oops..Something is wrong!`;
             inpt.style.color = 'red';
-            inpt.style.fontSize = '10px'
+            inpt.style.fontSize = '15px';
             console.error('There was an error!', error);
         });
         
