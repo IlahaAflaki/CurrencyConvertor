@@ -108,12 +108,14 @@ main .currency_elements_left {
     border: 1.5px solid #E5E5E5;
     background: none;
     padding: 9px 20px 9px 20px;
+    color: #C6C6C6;
 }
 
 main .currency_elements_right {
     border: 1.5px solid #E5E5E5;
     background: none;
     padding: 9px 20px 9px 20px;
+    color: #C6C6C6;
 }
 
 main .rub_btn {
@@ -179,47 +181,66 @@ main .money {
     overflow-wrap: break-word;
 }
 
+main .money{
+    font-size: 35px;
+    width: 260px;
+    height: 50px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 830px) {
 
 
-    body{
+    body {
         width: 200px;
     }
+
     header .header_parts {
         display: none;
     }
 
-    header{
+    header {
         width: 100vw;
     }
 
-    main .left_and_right{
+    main .left_and_right {
         display: flex;
         flex-direction: column;
         width: 100px;
     }
 
-    main .leftside{
+    main .leftside {
         width: 100px;
         margin-bottom: 70px;
     }
 
-    main .rightside{
+    main .rightside {
         width: 100px;
         margin-bottom: 100px;
     }
 
 
-    main .rightside_p{
+    main .rightside_p {
         width: 200px;
     }
 
-    main h1{
+    main h1 {
         width: 200px;
     }
 
-    main{
+    main {
         margin-top: 90px;
         width: 100px;
         display: flex;
